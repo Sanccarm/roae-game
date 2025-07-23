@@ -1,2 +1,2 @@
-# roae-game
-Roae the game
+# Roae: The Game
+Roae the game repo
