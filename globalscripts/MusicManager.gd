@@ -11,7 +11,7 @@ var fade_duration: float = 1.0
 
 # Dictionary to store different music tracks
 var music_tracks = {
-	"menu": "res://audio/menu_music.wav"
+	"menu": "res://audio/menu_music.ogg"
 }
 
 func _ready():

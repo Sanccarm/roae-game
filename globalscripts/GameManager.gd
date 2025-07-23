@@ -4,6 +4,8 @@ extends Node
 # This script manages player data and save files throughout the game
 
 var player_name: String = ""
+var player_blood: String = ""
+var player_blessing: String = ""
 var save_file_path: String = "user://saves/"
 
 func _ready():
@@ -25,8 +27,10 @@ func save_game_data(additional_data: Dictionary = {}):
 	# here is where I left some space for other things we can edit,
 	# this can be for like 
 	var save_data = {
-		"player_name": player_name,
 		"save_date": Time.get_datetime_string_from_system(),
+		"player_name": player_name,
+		"player_blood": player_blood,
+		"player_blessing": player_blessing
 	}
 	
 	# Merge any additional data
