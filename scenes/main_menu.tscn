@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfel17mo622qu"]
+[gd_scene load_steps=6 format=3 uid="uid://bfel17mo622qu"]
 
 [ext_resource type="Script" uid="uid://tnniwrebt71l" path="res://scripts/mainmenu.gd" id="1_ekxnf"]
 [ext_resource type="FontFile" uid="uid://br5310yx7xrgh" path="res://assets/fonts/AndTheDoorCreeeaked-Regular.otf" id="1_l6cm7"]
 [ext_resource type="AudioStream" uid="uid://kmxxanm40qc0" path="res://audio/sfx/tension-stinger-ambience.ogg" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://jkraumekp20k" path="res://scripts/new_game.gd" id="3_wu84c"]
+[ext_resource type="Script" uid="uid://bss38ppl3t38d" path="res://scripts/continue.gd" id="4_8ln24"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -13,9 +15,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 652.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_ekxnf")
 
@@ -64,28 +69,49 @@ offset_right = 189.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="New Game" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="NewGame" type="Button" parent="ColorRect/VBoxContainer"]
+clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+action_mode = 0
 text = "New Game"
-horizontal_alignment = 1
+flat = true
+script = ExtResource("3_wu84c")
 
-[node name="Continue" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="Continue" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+action_mode = 0
 text = "Continue"
-horizontal_alignment = 1
+flat = true
+script = ExtResource("4_8ln24")
 
-[node name="Settings" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="Settings" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+action_mode = 0
 text = "Settings"
-horizontal_alignment = 1
+flat = true
 
 [node name="Flash" type="ColorRect" parent="ColorRect"]
 visible = false
-layout_mode = 2
-offset_right = 1157.0
-offset_bottom = 656.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ColorRect"]
 stream = ExtResource("3_bqqt6")
 volume_db = 5.0
 pitch_scale = 1.1
+
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/NewGame" to="ColorRect/VBoxContainer/NewGame" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/VBoxContainer/NewGame" to="ColorRect/VBoxContainer/NewGame" method="_on_mouse_exited"]

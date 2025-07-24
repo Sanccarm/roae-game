@@ -24,4 +24,5 @@ SceneManager="*res://globalscripts/SceneManager.gd"
 
 [display]
 
-window/size/resizable=false
+window/size/viewport_width=1980
+window/size/viewport_height=1080
