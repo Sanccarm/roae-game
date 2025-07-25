@@ -1,7 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://4gbwnbfmi2c7"]
+[gd_scene load_steps=14 format=3 uid="uid://4gbwnbfmi2c7"]
+
+[ext_resource type="Script" uid="uid://yy8yyywptsd1" path="res://scripts/characterselect.gd" id="1_r13d2"]
+[ext_resource type="AudioStream" uid="uid://d4ndnweh53jmf" path="res://audio/sfx/Thundercrack.ogg" id="2_q0b5v"]
+[ext_resource type="AudioStream" uid="uid://dlcy15xw5hak" path="res://audio/sfx/rain-sound.ogg" id="3_72kfo"]
+
+[sub_resource type="Curve" id="Curve_72kfo"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+_data = [Vector2(0, 0.141573), 0.0, 0.0, 0, 0, Vector2(0.643564, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_n7u77"]
+curve = SubResource("Curve_72kfo")
 
 [sub_resource type="Gradient" id="Gradient_rj2gr"]
-offsets = PackedFloat32Array(0.0125, 0.9375)
+offsets = PackedFloat32Array(0.267045, 0.494318)
 colors = PackedColorArray(0.138929, 0.607925, 0.605836, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_r13d2"]
@@ -17,25 +29,33 @@ _limits = [0.0, 30.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 30), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_q0b5v"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveXYZTexture" id="CurveXYZTexture_72kfo"]
 curve_x = SubResource("Curve_rj2gr")
 curve_y = SubResource("Curve_r13d2")
+curve_z = SubResource("Curve_q0b5v")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n7u77"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(485, -300, 0)
+emission_shape_offset = Vector3(250, -300, 0)
 emission_shape = 3
-emission_box_extents = Vector3(1300, 1, 1)
-angle_min = -232.6
-angle_max = -232.6
+emission_box_extents = Vector3(750, 1, 1)
+angle_min = -209.8
+angle_max = -209.8
 direction = Vector3(-1, 1, 0)
 spread = 0.0
-gravity = Vector3(-2000, 3000, 0)
+gravity = Vector3(-1500, 3000, 0)
 scale_min = 0.2
 scale_over_velocity_curve = SubResource("CurveXYZTexture_72kfo")
 color_ramp = SubResource("GradientTexture1D_r13d2")
-turbulence_enabled = true
-collision_mode = 2
+alpha_curve = SubResource("CurveTexture_n7u77")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72kfo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -45,7 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CharSelect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,10 +73,157 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("1_r13d2")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect"]
-position = Vector2(855, 246)
+[node name="Flash" type="ColorRect" parent="CharSelect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CharSelect"]
+position = Vector2(522, 200)
 amount = 3000
 lifetime = 1.36
+speed_scale = 0.5
 visibility_rect = Rect2(-100, -100, 1150, 690)
 process_material = SubResource("ParticleProcessMaterial_n7u77")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharSelect"]
+stream = ExtResource("2_q0b5v")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="CharSelect"]
+stream = ExtResource("3_72kfo")
+volume_db = -9.727
+parameters/looping = true
+
+[node name="Panel" type="Panel" parent="CharSelect"]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 222.0
+offset_right = 713.0
+offset_bottom = 344.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_72kfo")
+
+[node name="NameLabel" type="Label" parent="CharSelect/Panel"]
+layout_mode = 2
+offset_left = 42.0
+offset_top = 8.0
+offset_right = 132.0
+offset_bottom = 31.0
+text = "Name:"
+
+[node name="Blood" type="Label" parent="CharSelect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.5
+offset_top = -16.5
+offset_right = -36.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Blood Type:"
+
+[node name="NameLabel3" type="Label" parent="CharSelect/Panel"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 79.0
+offset_right = 97.0
+offset_bottom = 102.0
+size_flags_vertical = 8
+text = "Blessing:"
+
+[node name="Nameinput" type="LineEdit" parent="CharSelect/Panel"]
+layout_mode = 2
+offset_left = 122.0
+offset_top = 4.0
+offset_right = 246.0
+offset_bottom = 35.0
+placeholder_text = "Name..."
+alignment = 1
+max_length = 15
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Bloodtypeinput" type="LineEdit" parent="CharSelect/Panel"]
+layout_mode = 2
+offset_left = 122.0
+offset_top = 40.0
+offset_right = 246.0
+offset_bottom = 71.0
+placeholder_text = "Blood Type..."
+alignment = 1
+max_length = 15
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Blessinginput" type="LineEdit" parent="CharSelect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = 17.0
+offset_right = 116.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Blessing..."
+alignment = 1
+max_length = 15
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Accept" type="Button" parent="CharSelect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = 56.5
+offset_right = 72.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Accept"
+flat = true
+
+[node name="Errorlabel" type="Label" parent="CharSelect/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.5
+offset_top = -104.0
+offset_right = 260.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1

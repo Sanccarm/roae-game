@@ -64,6 +64,7 @@ func _input(event):
 		flash_of_white()
 		turn_text_red()
 		fade_in_menu_buttons()
+
 	elif event is InputEventMouseButton and event.pressed: #mouse
 		is_waiting_for_input = false 
 		if blink_tween:

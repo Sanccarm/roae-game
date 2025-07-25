@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0125203x0pvo"]
+
+[ext_resource type="Script" uid="uid://bptyrlr0mve6e" path="res://globalscripts/UI.gd" id="1_ls3nm"]
+
+[node name="Persistent_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Persistent_UI" type="CanvasLayer" parent="."]
+layer = 100
+script = ExtResource("1_ls3nm")
+
+[node name="Bottom-Middle-Panel" type="ColorRect" parent="Persistent_UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 178.0
+offset_top = -153.0
+offset_right = -173.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.10748, 0.10748, 0.10748, 1)
+
+[node name="Bottom-Left-Panel" type="ColorRect" parent="Persistent_UI"]
+anchors_preset = -1
+anchor_top = 0.998
+anchor_bottom = 0.998
+offset_top = -151.704
+offset_right = 178.0
+offset_bottom = 1.29596
+color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="SpeakerFace" type="TextureRect" parent="Persistent_UI/Bottom-Left-Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 5
+
+[node name="Name" type="Label" parent="Persistent_UI/Bottom-Left-Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Panel" type="Panel" parent="Persistent_UI/Bottom-Left-Panel/Name"]
+modulate = Color(0.189153, 0.182224, 0.1776, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Bottom-Right-Panel" type="ColorRect" parent="Persistent_UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -173.0
+offset_top = -153.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.164706, 0.0313726, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Persistent_UI/Bottom-Right-Panel"]
+layout_mode = 1
+offset_right = 173.0
+offset_bottom = 50.0
+color = Color(0.105882, 0.105882, 0.105882, 1)
