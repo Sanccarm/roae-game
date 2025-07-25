@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://di22ayqp6jabm"]
+
+[ext_resource type="Texture2D" uid="uid://doxxhj5w6visi" path="res://assets/backgrounds/bacgrko.jpg" id="1_t6amy"]
+[ext_resource type="PackedScene" uid="uid://blrraqbtr42oh" path="res://globalscripts/UI.res" id="2_yhogq"]
+[ext_resource type="Texture2D" uid="uid://xsna5jvhdknf" path="res://assets/backgrounds/pexels-mike-van-schoonderwalt-1884800-5511124.jpg" id="3_yhogq"]
+
+[node name="MainVnScene" type="Node2D"]
+
+[node name="Persistent_UI" parent="." instance=ExtResource("2_yhogq")]
+
+[node name="Outside" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 493.0
+
+[node name="Background" type="TextureRect" parent="Outside"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t6amy")
+
+[node name="Office" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 495.0
+
+[node name="Background" type="TextureRect" parent="Office"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2423.0
+offset_top = -1752.0
+offset_right = 2424.0
+offset_bottom = 1753.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yhogq")
+expand_mode = 1

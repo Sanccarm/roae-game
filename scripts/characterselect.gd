@@ -35,10 +35,9 @@ func _ready():
 
 func _on_flash_timer_timeout():
 	var i := randi_range(1, 100)
-	var j := randi_range(1, 100)  # Reduced range for more frequent checks
 	if i <= 15:  # 15% chance each check
 		flash_lightning()
-		
+
 func play_sound():
 	thunderaudio.play()
 
@@ -157,7 +156,7 @@ func save_character_data(name: String, blood: String, blessing: String):
 		
 		# Change to next scene - replace "res://path/to/next/scene.tscn" with your actual next scene
 		MusicManager.stop_music()
-		SceneManager.fade_to_scene("res://scenes/cutscene.tscn")
+		SceneManager.fade_to_scene("res://scenes/Cutscene.tscn")
 	else:
 		show_error("Failed to save character data. Please try again.")
 

@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://duybh66h5xxgg"]
+[gd_scene load_steps=2 format=3 uid="uid://duybh66h5xxgg"]
+
+[ext_resource type="PackedScene" uid="uid://blrraqbtr42oh" path="res://globalscripts/UI.res" id="1_s4rvo"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,3 +28,5 @@ offset_right = 629.0
 offset_bottom = 356.0
 text = "Cutscene
 "
+
+[node name="Persistent_UI" parent="." instance=ExtResource("1_s4rvo")]

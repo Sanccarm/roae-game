@@ -21,18 +21,11 @@ config/icon="res://icon.svg"
 GameManager="*res://globalscripts/GameManager.gd"
 MusicManager="*res://globalscripts/MusicManager.gd"
 SceneManager="*res://globalscripts/SceneManager.gd"
-Ui="*res://globalscripts/UI.tscn"
-UI="*res://globalscripts/UI.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={
-"character": "res://timeline/characters/character.dch"
-}
-directories/dtl_directory={
-"timeline": "res://timeline/timeline.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style=""
@@ -60,7 +53,7 @@ text/autopauses={}
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
