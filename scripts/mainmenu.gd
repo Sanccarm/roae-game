@@ -6,6 +6,7 @@ extends ColorRect
 @onready var audio := $AudioStreamPlayer2D
 @onready var blinking_text := $AnyB
 
+
 var blink_tween = Tween
 var is_waiting_for_input := true
 
