@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://h6f80gt184jr"]
+
+[ext_resource type="Texture2D" uid="uid://3imlrrtlq305" path="res://assets/faces/Leo_face.png" id="1_b3smi"]
+[ext_resource type="FontFile" uid="uid://br5310yx7xrgh" path="res://assets/fonts/AndTheDoorCreeeaked-Regular.otf" id="2_euyms"]
+[ext_resource type="Script" uid="uid://2f4fi75scxes" path="res://addons/richtext2/richer_text_label.gd" id="3_1d5rt"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 516.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainUI" type="ColorRect" parent="Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Picturefame" type="ColorRect" parent="Ui/MainUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -970.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.123473, 0.123473, 0.123473, 1)
+
+[node name="Picture" type="TextureRect" parent="Ui/MainUI/Picturefame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -67.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b3smi")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Ui/MainUI/Picturefame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.902
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0260162
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Name" type="Label" parent="Ui/MainUI/Picturefame/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_euyms")
+theme_override_font_sizes/font_size = 19
+text = "Leo"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Ui/MainUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.158
+anchor_right = 0.571
+anchor_bottom = 0.994
+offset_left = -0.0160065
+offset_right = 0.207947
+offset_bottom = 0.977997
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[hidden] You fuckin' kidding me..? [\\hidden]"
+fit_content = true
+script = ExtResource("3_1d5rt")
+metadata/_custom_type_script = "uid://2f4fi75scxes"
+
+[node name="InvandOther" type="ColorRect" parent="Ui/MainUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 970.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.123473, 0.123473, 0.123473, 1)
