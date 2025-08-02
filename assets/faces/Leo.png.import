@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3imlrrtlq305"
-path="res://.godot/imported/Leo_face.png-7b89533c0c79a0e7f6d615a6c9723f2b.ctex"
+path="res://.godot/imported/Leo.png-8a7534174c36ff8610d3bc75700bcaa1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/faces/Leo_face.png"
-dest_files=["res://.godot/imported/Leo_face.png-7b89533c0c79a0e7f6d615a6c9723f2b.ctex"]
+source_file="res://assets/faces/Leo.png"
+dest_files=["res://.godot/imported/Leo.png-8a7534174c36ff8610d3bc75700bcaa1.ctex"]
 
 [params]
 

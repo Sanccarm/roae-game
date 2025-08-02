@@ -1,23 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://h6f80gt184jr"]
+[gd_scene load_steps=9 format=3 uid="uid://h6f80gt184jr"]
 
-[ext_resource type="Texture2D" uid="uid://3imlrrtlq305" path="res://assets/faces/Leo_face.png" id="1_b3smi"]
+[ext_resource type="Texture2D" uid="uid://n0643vc0jfq3" path="res://assets/faces/playerfaces/White-Male-Player-Blacked.png" id="1_bjair"]
+[ext_resource type="Script" uid="uid://cqfjilbutqtxi" path="res://globalscripts/UI.gd" id="1_el44g"]
 [ext_resource type="FontFile" uid="uid://br5310yx7xrgh" path="res://assets/fonts/AndTheDoorCreeeaked-Regular.otf" id="2_euyms"]
 [ext_resource type="Script" uid="uid://d0kpf181s7cfy" path="res://addons/richtext2/text_effects/anims/rte_back.gd" id="3_bjair"]
+[ext_resource type="Script" uid="uid://5hv4pjs1xcht" path="res://addons/richtext2/text_effects/anims/rte_fader.gd" id="5_el44g"]
 [ext_resource type="Script" uid="uid://b6mbstaftpedd" path="res://addons/richtext2/rich_text_animation.gd" id="5_rke1u"]
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_bjair"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_bxvwy"]
 resource_name = "back"
 script = ExtResource("3_bjair")
-metadata/rt = 2227091619258
+metadata/rt = 46487568470324
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_rke1u"]
+resource_name = "fader"
+script = ExtResource("5_el44g")
+metadata/rt = 46488038237215
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_el44g")
 
 [node name="Ui" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 516.0
+offset_top = 543.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -31,12 +39,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Picturefame" type="ColorRect" parent="Ui/MainUI"]
+[node name="ChoicesBox" type="ColorRect" parent="Ui/MainUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -970.0
+offset_left = 579.0
+offset_right = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.256732, 0.0343239, 0.022636, 1)
+
+[node name="Instructions" type="Label" parent="Ui/MainUI/ChoicesBox"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 23.0
+
+[node name="Picturefame" type="ColorRect" parent="Ui/MainUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.143
+anchor_bottom = 1.0
+offset_right = 0.263992
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.123473, 0.123473, 0.123473, 1)
@@ -46,11 +70,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -67.0
-offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_b3smi")
+texture = ExtResource("1_bjair")
 expand_mode = 1
 
 [node name="Panel" type="Panel" parent="Ui/MainUI/Picturefame"]
@@ -72,31 +94,37 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_euyms")
 theme_override_font_sizes/font_size = 19
-text = "Leo"
+text = "You"
 horizontal_alignment = 1
 
-[node name="RichTextAnimation" type="RichTextLabel" parent="Ui/MainUI/Picturefame"]
+[node name="Textbox" type="RichTextLabel" parent="Ui/MainUI/Picturefame"]
 clip_contents = false
-custom_minimum_size = Vector2(0, 23)
-layout_mode = 0
-offset_left = 182.0
-offset_right = 579.0
-offset_bottom = 163.0
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 3.181
+anchor_bottom = 0.994
+offset_right = 0.0579834
+offset_bottom = 0.977997
 theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
-theme_override_font_sizes/bold_italics_font_size = 16
-theme_override_font_sizes/italics_font_size = 16
-theme_override_font_sizes/mono_font_size = 16
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 17
+theme_override_font_sizes/italics_font_size = 17
+theme_override_font_sizes/mono_font_size = 17
+theme_override_font_sizes/normal_font_size = 17
+theme_override_font_sizes/bold_font_size = 17
 bbcode_enabled = true
 fit_content = true
-custom_effects = [SubResource("RichTextEffect_bjair")]
+custom_effects = [SubResource("RichTextEffect_bxvwy")]
+drag_and_drop_selection_enabled = false
 script = ExtResource("5_rke1u")
 animation = "back"
-_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 0, 0)])
-_char_size = Array[Vector2]([Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)])
-_alpha = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-_alpha_goal = Array[float]([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+progress = 1.0
+visible_character = 17
+_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 9.625, 19), Transform2D(1, 0, 0, 1, 20.4219, 19), Transform2D(1, 0, 0, 1, 25.1563, 19), Transform2D(1, 0, 0, 1, 33.4375, 19), Transform2D(1, 0, 0, 1, 37.8594, 19), Transform2D(1, 0, 0, 1, 44.5469, 19), Transform2D(1, 0, 0, 1, 55.3438, 19), Transform2D(1, 0, 0, 1, 65.1406, 19), Transform2D(1, 0, 0, 1, 69.5625, 19), Transform2D(1, 0, 0, 1, 76.25, 19), Transform2D(1, 0, 0, 1, 86.0469, 19), Transform2D(1, 0, 0, 1, 95.4063, 19), Transform2D(1, 0, 0, 1, 102.094, 19), Transform2D(1, 0, 0, 1, 112.688, 19), Transform2D(1, 0, 0, 1, 123.078, 19), Transform2D(1, 0, 0, 1, 132.438, 19)])
+_char_size = Array[Vector2]([Vector2(0, 0), Vector2(11, 14), Vector2(5, 14), Vector2(10, 14), Vector2(0, 14), Vector2(9, 14), Vector2(11, 14), Vector2(11, 14), Vector2(0, 14), Vector2(9, 14), Vector2(11, 14), Vector2(12, 14), Vector2(9, 14), Vector2(11, 14), Vector2(12, 14), Vector2(12, 14), Vector2(5, 14)])
+_alpha = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+_alpha_goal = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 _forced_finish_delay = -0.0432146
 animation = "back"
 default_wait_time = 0.48
@@ -112,14 +140,14 @@ shortcut_expression = true
 shortcut_bookmark = true
 signal_quotes = true
 signal_stars = true
-bbcode = "Stupid fucks tried to kill me"
+bbcode = "This the textbox."
 effects = 2
 alignment = 0
 color = Color(1, 1, 1, 1)
 emoji_scale = 1.0
 font = ""
 font_auto_setup = true
-font_size = 16
+font_size = 17
 font_bold_weight = 1.5
 font_italics_slant = 0.25
 font_italics_weight = -0.25
@@ -172,8 +200,101 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 970.0
-offset_top = -1.0
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.123473, 0.123473, 0.123473, 1)
+
+[node name="Objective" type="ColorRect" parent="."]
+offset_right = 465.0
+offset_bottom = 31.0
+color = Color(0.254902, 0.0352941, 0.0235294, 1)
+
+[node name="ObjectiveLabel" type="RichTextLabel" parent="Objective"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_rke1u")]
+script = ExtResource("5_rke1u")
+_forced_finish_delay = -0.032984
+default_wait_time = 1.0
+play_on_bbcode = true
+play_speed = 30.0
+fade_out = false
+fade_in_speed = 10.0
+fade_out_speed = 120.0
+ctc_offset = Vector2(1, -0.5)
+ctc_on_finished = false
+ctc_on_wait = false
+shortcut_expression = true
+shortcut_bookmark = true
+signal_quotes = true
+signal_stars = true
+bbcode = ""
+effects = 2
+alignment = 0
+color = Color(1, 1, 1, 1)
+emoji_scale = 1.0
+font = ""
+font_auto_setup = true
+font_size = 16
+font_bold_weight = 1.5
+font_italics_slant = 0.25
+font_italics_weight = -0.25
+shadow_enabled = true
+shadow_offset = 0.08
+shadow_alpha = 0.25
+shadow_outline_size = 0.1
+outline_size = 0
+outline_mode = 1
+outline_adjust = 0.8
+outline_hue_adjust = 0.0125
+nicer_quotes_enabled = true
+nicer_quotes_format = "“%s”"
+markdown_enabled = true
+markdown_format_bold = "[b]%s[]"
+markdown_format_italics = "[i]%s[]"
+markdown_format_bold_italics = "[bi]%s[]"
+markdown_format_highlight = "[green;sin]%s[]"
+markdown_format_bold2 = "[b]*%s*[]"
+markdown_format_italics2 = "[i;gray]*%s*[]"
+markdown_format_bold_italics2 = "%s"
+context_enabled = true
+context_path = NodePath("/root/State")
+context_state = {}
+context_rich_objects = true
+context_rich_ints = true
+context_rich_array = true
+autostyle_numbers = true
+autostyle_numbers_tag = "[salmon]%s[]"
+autostyle_numbers_pad_decimals = true
+autostyle_numbers_decimals = 2
+autostyle_emojis = true
+effect_weight = 0.0
+image_path = "res://"
+image_resize_to_font_size = true
+image_scale = 1.0
+meta_auto_https = true
+meta_cursor = 2
+override_bbcodeEnabled = true
+override_clipContents = false
+override_fitContent = true
+metadata/_custom_type_script = "uid://b6mbstaftpedd"
+metadata/mouse_position = Vector2(668.202, -1.12561)
+metadata/frame = 519743
+metadata/rand = Array[int]([497470832, 2622388636, 2739831083, 275796658, 3727227119, 3399789639, 1098708466, 1757196353, 2666816896, 3973759327, 3313997866, 388685592, 393793877, 936996920, 2427225253, 1861144923, 3241415389, 3398651419, 372086434, 1170174684, 118481861])

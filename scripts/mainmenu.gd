@@ -1,16 +1,16 @@
 extends ColorRect
 @onready var roaetext := $Roae
 @onready var buttonbox := $VBoxContainer
-@onready var tween := $Tween
 @onready var White := $Flash
 @onready var audio := $AudioStreamPlayer2D
 @onready var blinking_text := $AnyB
-
+@onready var GUI = gui
 
 var blink_tween = Tween
 var is_waiting_for_input := true
 
 func _ready():
+	GUI.hide()
 	MusicManager.play_music("menu")
 	roaetext.modulate.a = 1.0
 	buttonbox.modulate.a = 0.0

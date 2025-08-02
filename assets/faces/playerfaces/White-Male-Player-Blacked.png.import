@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doxxhj5w6visi"
-path="res://.godot/imported/bacgrko.jpg-4be57c2936e53b48ffac4eab87a6b93a.ctex"
+uid="uid://n0643vc0jfq3"
+path="res://.godot/imported/White-Male-Player-Blacked.png-2eee527b38a7a61548c7346a21846928.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/bacgrko.jpg"
-dest_files=["res://.godot/imported/bacgrko.jpg-4be57c2936e53b48ffac4eab87a6b93a.ctex"]
+source_file="res://assets/faces/playerfaces/White-Male-Player-Blacked.png"
+dest_files=["res://.godot/imported/White-Male-Player-Blacked.png-2eee527b38a7a61548c7346a21846928.ctex"]
 
 [params]
 
