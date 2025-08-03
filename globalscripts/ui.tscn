@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://h6f80gt184jr"]
 
-[ext_resource type="Texture2D" uid="uid://n0643vc0jfq3" path="res://assets/faces/playerfaces/White-Male-Player-Blacked.png" id="1_bjair"]
 [ext_resource type="Script" uid="uid://cqfjilbutqtxi" path="res://globalscripts/UI.gd" id="1_el44g"]
+[ext_resource type="Texture2D" uid="uid://dkfyjxb2j512q" path="res://assets/faces/playerfaces/Black-Male-Player-Blacked.png" id="2_bxvwy"]
 [ext_resource type="FontFile" uid="uid://br5310yx7xrgh" path="res://assets/fonts/AndTheDoorCreeeaked-Regular.otf" id="2_euyms"]
 [ext_resource type="Script" uid="uid://d0kpf181s7cfy" path="res://addons/richtext2/text_effects/anims/rte_back.gd" id="3_bjair"]
 [ext_resource type="Script" uid="uid://5hv4pjs1xcht" path="res://addons/richtext2/text_effects/anims/rte_fader.gd" id="5_el44g"]
@@ -10,15 +10,19 @@
 [sub_resource type="RichTextEffect" id="RichTextEffect_bxvwy"]
 resource_name = "back"
 script = ExtResource("3_bjair")
-metadata/rt = 46487568470324
+metadata/rt = 2228668677666
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_rke1u"]
 resource_name = "fader"
 script = ExtResource("5_el44g")
-metadata/rt = 46488038237215
+metadata/rt = 2229138439731
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_el44g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
+drag_horizontal_enabled = true
 
 [node name="Ui" type="Control" parent="."]
 layout_mode = 3
@@ -39,22 +43,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ChoicesBox" type="ColorRect" parent="Ui/MainUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 579.0
-offset_right = -182.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.256732, 0.0343239, 0.022636, 1)
-
-[node name="Instructions" type="Label" parent="Ui/MainUI/ChoicesBox"]
-layout_mode = 0
-offset_right = 141.0
-offset_bottom = 23.0
-
 [node name="Picturefame" type="ColorRect" parent="Ui/MainUI"]
 layout_mode = 1
 anchors_preset = -1
@@ -72,7 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_bjair")
+texture = ExtResource("2_bxvwy")
 expand_mode = 1
 
 [node name="Panel" type="Panel" parent="Ui/MainUI/Picturefame"]
@@ -99,14 +87,12 @@ horizontal_alignment = 1
 
 [node name="Textbox" type="RichTextLabel" parent="Ui/MainUI/Picturefame"]
 clip_contents = false
-custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
-anchor_right = 3.181
-anchor_bottom = 0.994
-offset_right = 0.0579834
-offset_bottom = 0.977997
+anchor_right = 3.509
+anchor_bottom = 1.0
+offset_right = 0.0150146
 theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_font_sizes/bold_italics_font_size = 17
 theme_override_font_sizes/italics_font_size = 17
@@ -119,12 +105,6 @@ custom_effects = [SubResource("RichTextEffect_bxvwy")]
 drag_and_drop_selection_enabled = false
 script = ExtResource("5_rke1u")
 animation = "back"
-progress = 1.0
-visible_character = 17
-_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 9.625, 19), Transform2D(1, 0, 0, 1, 20.4219, 19), Transform2D(1, 0, 0, 1, 25.1563, 19), Transform2D(1, 0, 0, 1, 33.4375, 19), Transform2D(1, 0, 0, 1, 37.8594, 19), Transform2D(1, 0, 0, 1, 44.5469, 19), Transform2D(1, 0, 0, 1, 55.3438, 19), Transform2D(1, 0, 0, 1, 65.1406, 19), Transform2D(1, 0, 0, 1, 69.5625, 19), Transform2D(1, 0, 0, 1, 76.25, 19), Transform2D(1, 0, 0, 1, 86.0469, 19), Transform2D(1, 0, 0, 1, 95.4063, 19), Transform2D(1, 0, 0, 1, 102.094, 19), Transform2D(1, 0, 0, 1, 112.688, 19), Transform2D(1, 0, 0, 1, 123.078, 19), Transform2D(1, 0, 0, 1, 132.438, 19)])
-_char_size = Array[Vector2]([Vector2(0, 0), Vector2(11, 14), Vector2(5, 14), Vector2(10, 14), Vector2(0, 14), Vector2(9, 14), Vector2(11, 14), Vector2(11, 14), Vector2(0, 14), Vector2(9, 14), Vector2(11, 14), Vector2(12, 14), Vector2(9, 14), Vector2(11, 14), Vector2(12, 14), Vector2(12, 14), Vector2(5, 14)])
-_alpha = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
-_alpha_goal = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 _forced_finish_delay = -0.0432146
 animation = "back"
 default_wait_time = 0.48
@@ -140,7 +120,7 @@ shortcut_expression = true
 shortcut_bookmark = true
 signal_quotes = true
 signal_stars = true
-bbcode = "This the textbox."
+bbcode = ""
 effects = 2
 alignment = 0
 color = Color(1, 1, 1, 1)
@@ -203,6 +183,23 @@ offset_left = 970.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.123473, 0.123473, 0.123473, 1)
+
+[node name="ChoicesBox" type="ColorRect" parent="Ui/MainUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 579.0
+offset_right = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.256732, 0.0343239, 0.022636, 1)
+
+[node name="Instructions" type="Label" parent="Ui/MainUI/ChoicesBox"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 23.0
+text = "Make your choice:"
 
 [node name="Objective" type="ColorRect" parent="."]
 offset_right = 465.0

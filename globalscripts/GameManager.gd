@@ -6,6 +6,7 @@ extends Node
 var player_name: String = ""
 var player_blood: String = ""
 var player_blessing: String = ""
+var player_sprite: String = ""
 var save_file_path: String = "user://saves/"
 
 func _ready():
@@ -30,7 +31,8 @@ func save_game_data(additional_data: Dictionary = {}):
 		"save_date": Time.get_datetime_string_from_system(),
 		"player_name": player_name,
 		"player_blood": player_blood,
-		"player_blessing": player_blessing
+		"player_blessing": player_blessing,
+		"player_sprite": player_sprite
 	}
 	
 	# Merge any additional data
@@ -110,7 +112,8 @@ func delete_save(name: String) -> bool:
 		print("Save file doesn't exist: ", name)
 		return false
 		
-# FUNCTIONS FOR GAME DATA SAVES
+# ============= Functions for get and set vars =============
+# Set the current player name
 func set_player_name(name: String):
 	player_name = name
 	print("Player name set to: ", player_name)
@@ -118,6 +121,14 @@ func set_player_name(name: String):
 # Get the current player name
 func get_player_name() -> String:
 	return player_name
+# Set Player sprite
+func set_player_sprite(sprite: String):
+	player_sprite = sprite
+	print("Player Sprite set to: ", player_sprite)
+	
+# Get Player sprite name
+func get_player_sprite() -> String:
+	return player_sprite
 	
 # ============= DEBUGGING TESTS =============
 

@@ -1,10 +1,10 @@
 extends CanvasLayer
-@onready var choice_box = $Ui/MainUI/ChoicesBox
-@onready var instructions_label = $Ui/MainUI/ChoicesBox/Instructions  
-@onready var objective_box = $Objective
-@onready var objective_label = $Objective/ObjectiveLabel
-@onready var picture = $Ui/MainUI/Picturefame/Picture
-@onready var talker_name = $Ui/MainUI/Picturefame/Panel/Name
+@onready var choice_box := $Ui/MainUI/ChoicesBox
+@onready var instructions_label := $Ui/MainUI/ChoicesBox/Instructions  
+@onready var objective_box := $Objective
+@onready var objective_label := $Objective/ObjectiveLabel
+@onready var picture := $Ui/MainUI/Picturefame/Picture
+@onready var talker_name := $Ui/MainUI/Picturefame/Panel/Name
 
 
 func _ready() -> void:

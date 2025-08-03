@@ -9,10 +9,40 @@ extends ColorRect
 @onready var blessing_input := $Panel/Blessinginput  # Adjust path as needed
 @onready var create_button := $Panel/Accept  # Adjust path as needed
 @onready var error_label := $Panel/Errorlabel 
+@onready var character_panel := $CharacterPanel
+@onready var character_panel_button := $Panel/OpenCharacters
+@onready var character_group = ButtonGroup.new()
+
+@onready var option1 := $CharacterPanel/Option1 #white
+@onready var option2 := $CharacterPanel/Option2 #black
+@onready var option3 := $CharacterPanel/Option3 #white fem
+@onready var option4 := $CharacterPanel/Option4 #black fem
 
 var valid_blood_types := ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
 
+var player_sprite := ""  # Store the selected sprite path
+
 func _ready():
+	# Setup button group
+	option1.toggle_mode = true
+	option2.toggle_mode = true
+	option3.toggle_mode = true
+	option4.toggle_mode = true
+	
+	option1.button_group = character_group
+	option2.button_group = character_group
+	option3.button_group = character_group
+	option4.button_group = character_group
+	
+	# Connect character selection signals
+	option1.toggled.connect(_on_option_1_toggled)
+	option2.toggled.connect(_on_option_2_toggled)
+	option3.toggled.connect(_on_option_3_toggled)
+	option4.toggled.connect(_on_option_4_toggled)
+
+	gui.hide()
+	character_panel.visible = false
+	character_panel.position.x = 1153.0
 	lightning.modulate.a = 0.0
 	varpanel.modulate.a = 0.0
 	lightning.visible = false
@@ -52,8 +82,60 @@ func flash_lightning():
 	var flash_tween = create_tween()
 	flash_tween.tween_property(lightning, "modulate:a", 0.0, 2.0)
 	flash_tween.finished.connect(func(): lightning.visible = false)
+
+func _on_open_characters_toggled(toggled_on: bool) -> void:
+	character_panel.visible = true 
+	var panel_tween_open = get_tree().create_tween()
+	var panel_tween_close = get_tree().create_tween()
+	if character_panel_button.button_pressed == true:
+		if panel_tween_close:
+			panel_tween_close.stop()
+		panel_tween_open.tween_property(character_panel, "position:x", 967.0, 0.20)
+		
+	if character_panel_button.button_pressed == false:
+		if panel_tween_open:
+			panel_tween_open.stop()
+		await panel_tween_close.tween_property(character_panel, "position:x", 1153.0, 0.20)
+		#character_panel.visible = false
+
+# Updated character selection functions that save the sprite
+func _on_option_1_toggled(is_pressed: bool) -> void:
+	if is_pressed:
+		character_panel_button.text = "Option 1"
+		player_sprite = "res://assets/faces/playerfaces/White-Male-Player-Blacked.png"
+		hide_error()  # Clear any selection errors
+
+func _on_option_2_toggled(is_pressed: bool) -> void:
+	if is_pressed:
+		character_panel_button.text = "Option 2"
+		player_sprite = "res://assets/faces/playerfaces/Black-Male-Player-Blacked.png"
+		hide_error()
+
+func _on_option_3_toggled(is_pressed: bool) -> void:
+	if is_pressed:
+		character_panel_button.text = "Option 3"
+		player_sprite = "res://assets/faces/playerfaces/White-Female-Player-Blacked.png"
+		hide_error()
+
+func _on_option_4_toggled(is_pressed: bool) -> void:
+	if is_pressed:
+		character_panel_button.text = "Option 4"
+		player_sprite = "res://assets/faces/playerfaces/Black-Female-Player-Blacked.png"
+		hide_error()
+
+func validate_character_selection() -> bool:
+	var selected_button = character_group.get_pressed_button()
 	
-# -------------------- Code for name validation, blood type validation, and blessing length --------------------
+	if selected_button == null:
+		show_error("Please select a character before continuing.")
+		return false
+	else:
+		return true
+
+func get_player_sprite() -> String:
+	return player_sprite
+
+# -------------------- Code for name validation, blood type validation, --------------------
 # Validation functions
 func validate_name(name: String) -> String:
 	# Remove leading/trailing whitespace
@@ -99,21 +181,24 @@ func show_error(message: String):
 	if error_label:
 		error_label.text = message
 		error_label.visible = true
-		# Hide error after 5 seconds
-		await get_tree().create_timer(5.0).timeout
-		if error_label:
-			error_label.visible = false
+		error_label.modulate = Color.RED
+
+func hide_error():
+	if error_label:
+		error_label.text = ""
+		error_label.visible = false
 
 func _on_create_button_pressed():
 	# Get input values
 	var player_name = name_input.text if name_input else ""
 	var player_blood = blood_input.text if blood_input else ""
 	var player_blessing = blessing_input.text if blessing_input else ""
-	
+
 	# Validate each input
 	var name_error = validate_name(player_name)
 	var blood_error = validate_blood_type(player_blood)
 	var blessing_error = validate_blessing(player_blessing)
+	var character_valid = validate_character_selection()  # Returns bool now
 	
 	# Check for errors
 	if name_error != "":
@@ -128,19 +213,24 @@ func _on_create_button_pressed():
 		show_error("Blessing Error: " + blessing_error)
 		return
 	
+	if not character_valid:
+		# Error message already shown by validate_character_selection()
+		return
+	
 	# All validation passed - save the data
-	save_character_data(player_name, player_blood, player_blessing)
+	save_character_data(player_name, player_blood, player_blessing, player_sprite)
 
-func save_character_data(name: String, blood: String, blessing: String):
+func save_character_data(name: String, blood: String, blessing: String, sprite: String):
 	# Clean the data
 	name = name.strip_edges()
 	blood = blood.strip_edges().to_upper()
 	blessing = blessing.strip_edges()
 	
-	# Set data in GameManager
+	# Set data in GameManager (adjust these calls to match your GameManager)
 	GameManager.set_player_name(name)
 	GameManager.player_blood = blood
 	GameManager.player_blessing = blessing
+	GameManager.player_sprite = sprite  # Save the sprite path
 	
 	# Save the game data
 	var success = GameManager.save_game_data({
@@ -153,20 +243,15 @@ func save_character_data(name: String, blood: String, blessing: String):
 		print("Name: ", name)
 		print("Blood Type: ", blood)
 		print("Blessing: ", blessing)
+		print("Sprite: ", sprite)
 		
-		# Change to next scene - replace "res://path/to/next/scene.tscn" with your actual next scene
+		# Change to next scene - replace with your actual next scene
 		MusicManager.stop_music()
 		SceneManager.fade_to_scene("res://scenes/Cutscene.tscn")
 	else:
 		show_error("Failed to save character data. Please try again.")
 
 # Optional: Add real-time validation feedback
-#func _on_name_input_text_changed(new_text: String):
-	#var error = validate_name(new_text)
-	#if error != "" and new_text.length() > 0:
-		## Could show inline error feedback here
-		#pass
-
 func _on_blood_input_text_changed(new_text: String):
 	var error = validate_blood_type(new_text)
 	if error != "" and new_text.length() > 0:
